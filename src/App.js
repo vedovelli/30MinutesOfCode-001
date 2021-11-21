@@ -1,21 +1,8 @@
-import { Users } from "./containers/Users/Users";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 
-import { Link, Outlet, ReactLocation, Router } from "react-location";
-
-const location = new ReactLocation();
-const routes = [
-  {
-    path: "/",
-    element: <h1>Dashboard</h1>,
-  },
-  {
-    path: "/users",
-    element: <Users />,
-  },
-];
+import { Link, Outlet, Router, location, routes } from "./router";
 
 const user = {
   name: "Tom Cook",
@@ -24,9 +11,9 @@ const user = {
     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
 };
 const navigation = [
-  { name: "Dashboard", href: "/", current: true },
-  { name: "Users", href: "/users", current: false },
-  { name: "Products", href: "/products", current: false },
+  { name: "Dashboard", href: "/" },
+  { name: "Users", href: "/users" },
+  { name: "Products", href: "/products" },
 ];
 const userNavigation = [
   { name: "Your Profile", href: "#" },
@@ -58,19 +45,17 @@ export default function App() {
                     <div className="hidden md:block">
                       <div className="ml-10 flex items-baseline space-x-4">
                         {navigation.map((item) => (
-                          <a
+                          <Link
                             key={item.name}
-                            href={item.href}
-                            className={classNames(
-                              item.current
-                                ? "bg-gray-900 text-white"
-                                : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                              "px-3 py-2 rounded-md text-sm font-medium"
-                            )}
+                            to={item.href}
+                            getActiveProps={(location) => ({
+                              className: "bg-gray-900 text-white",
+                            })}
+                            className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                             aria-current={item.current ? "page" : undefined}
                           >
                             {item.name}
-                          </a>
+                          </Link>
                         ))}
                       </div>
                     </div>
@@ -205,12 +190,6 @@ export default function App() {
             </>
           )}
         </Disclosure>
-
-        <header className="bg-white shadow">
-          <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
-          </div>
-        </header>
         <main>
           <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
             <div className="px-4 py-6 sm:px-0">

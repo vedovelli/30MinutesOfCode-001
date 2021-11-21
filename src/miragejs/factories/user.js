@@ -10,7 +10,7 @@ export default {
       return faker.internet.email();
     },
     imageUrl() {
-      return faker.random.image();
+      return faker.image.avatar();
     },
     role() {
       return faker.random.arrayElement(['admin', 'user']);

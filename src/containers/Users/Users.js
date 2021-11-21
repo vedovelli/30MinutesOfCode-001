@@ -1,19 +1,20 @@
-import { useEffect, useState } from "react";
-import { http } from "../../service/api";
 import { Card } from "./Card";
+import { useMatch } from "../../router";
+import { Header } from "../../components/Header/Header";
 
 export function Users() {
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    http.get("/users").then(({ data }) => setUsers(data.users));
-  }, []);
+  const {
+    data: { users },
+  } = useMatch();
 
   return (
-    <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {users?.map((user) => (
-        <Card key={user.id} user={user} />
-      ))}
-    </ul>
+    <>
+      <Header>Users</Header>
+      <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {users?.map((user) => (
+          <Card key={user.id} user={user} />
+        ))}
+      </ul>
+    </>
   );
 }
