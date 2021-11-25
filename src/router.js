@@ -1,7 +1,7 @@
 import { Link, Outlet, ReactLocation, Router, useMatch } from "react-location";
 import { ReactLocationSimpleCache } from "react-location-simple-cache";
 import { http } from "./service/api";
-import { Header } from "./components/Header/Header";
+import { Header, Spinner } from "./components";
 
 const location = new ReactLocation();
 
@@ -19,7 +19,9 @@ const routes = [
     loader: cache.createLoader(async () => ({
       users: await http.get("/users").then((data) => data.data.users),
     })),
-    pendingElement: async () => <div>Loading...</div>,
+    pendingElement: async () => (
+      <Spinner variant="green" message="Loading Users!" />
+    ),
     pendingMs: 300,
   },
   {

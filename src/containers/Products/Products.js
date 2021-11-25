@@ -1,6 +1,6 @@
 import { http } from "../../service/api";
 import { Card } from "./Card";
-import { Header } from "../../components/Header/Header";
+import { Header, Spinner } from "../../components";
 import { useQuery } from "react-query";
 
 export default function Products() {
@@ -8,7 +8,7 @@ export default function Products() {
     http.get("/products").then(({ data }) => data.products)
   );
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Spinner message="Loading Products" variant="orange" />;
   if (isError) return <p>Error</p>;
 
   return (
