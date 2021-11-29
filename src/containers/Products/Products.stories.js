@@ -28,32 +28,34 @@ const Template = (args) => {
 export const Default = Template.bind({});
 Default.parameters = {
   msw: [
-    rest.get("/api/products", (req, res, ctx) => {
+    rest.get("api/products", (req, res, ctx) => {
       return res(
         ctx.json({
-          products: [
-            {
-              productDetails: "http://reyna.org",
-              imageUrl: "http://placeimg.com/640/480/cats",
-              price: 5861,
-              name: "Eloise Romaguera",
-              id: "1",
-            },
-            {
-              productDetails: "http://dakota.net",
-              imageUrl: "http://placeimg.com/640/480/animals",
-              price: 5664,
-              name: "Mike Frami III",
-              id: "2",
-            },
-            {
-              productDetails: "https://ambrose.org",
-              imageUrl: "http://placeimg.com/640/480/people",
-              price: 6328,
-              name: "Sheryl Carter",
-              id: "3",
-            },
-          ],
+          data: {
+            products: [
+              {
+                productDetails: "http://reyna.org",
+                imageUrl: "http://placeimg.com/640/480/cats",
+                price: 5861,
+                name: "Eloise Romaguera",
+                id: "1",
+              },
+              {
+                productDetails: "http://dakota.net",
+                imageUrl: "http://placeimg.com/640/480/animals",
+                price: 5664,
+                name: "Mike Frami III",
+                id: "2",
+              },
+              {
+                productDetails: "https://ambrose.org",
+                imageUrl: "http://placeimg.com/640/480/people",
+                price: 6328,
+                name: "Sheryl Carter",
+                id: "3",
+              },
+            ],
+          },
         })
       );
     }),
