@@ -1,9 +1,7 @@
 import "../src/index.css";
-import { initialize, mswDecorator } from "msw-storybook-addon";
+import { globalDecorators } from "./decorators";
 
-initialize();
-
-export const decorators = [mswDecorator];
+export const decorators = globalDecorators;
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -13,4 +11,8 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  mirage: {
+    // automatically log requests to browser console https://miragejs.com/api/classes/server/#logging
+    logging: true,
+  }
 };
