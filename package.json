@@ -66,10 +66,17 @@
     "@storybook/preset-create-react-app": "^3.2.0",
     "@storybook/react": "^6.3.12",
     "autoprefixer": "^9",
+    "babel-loader": "8.1.0",
     "faker": "^5.5.3",
     "miragejs": "^0.1.42",
+    "msw": "^0.35.0",
+    "msw-storybook-addon": "^1.4.1",
     "postcss": "^7",
     "react-location-devtools": "^3.2.8",
+    "storybook-mirage": "^0.0.4",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
