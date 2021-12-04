@@ -60,13 +60,5 @@ describe("Components > Spinner", () => {
         });
       }
     );
-
-    // it("should render a spinner with red variant", () => {
-    //   render(<Component {...Red.args} />);
-    //   expect(screen.getByTestId("spinner")).toHaveStyle({
-    //     "border-color": customColors.red,
-    //   });
-    //   expect(screen.getByText(/Look Ma: I'm red!/i)).toBeInTheDocument();
-    // });
   });
 });
