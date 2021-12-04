@@ -27,9 +27,7 @@ const routes = [
   {
     path: "/products",
     element: () =>
-      import("./containers/Products/Products").then((module) => (
-        <module.default />
-      )),
+      import("./containers/Products").then((module) => <module.default />),
   },
 ];
 

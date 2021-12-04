@@ -1,7 +1,7 @@
 import "./Spinner.css";
 import colors from "tailwindcss/colors";
 
-const customColors = {
+export const customColors = {
   blue: colors.blue[500],
   red: colors.red[500],
   green: colors.green[500],
@@ -15,6 +15,7 @@ export function Spinner({ message, variant }) {
       <div className="spinner-flex">
         <div
           style={{ borderColor: customColors[variant] }}
+          data-testid="spinner"
           className="spinner-loader"
         ></div>
       </div>
